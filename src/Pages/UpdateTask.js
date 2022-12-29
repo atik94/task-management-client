@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 
 const UpdateTask = () => {
@@ -17,8 +18,7 @@ const UpdateTask = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
-          alert("Task updated");
-          console.log(data);
+          toast.success("Task updated successfully");
         }
       });
   };
@@ -30,28 +30,30 @@ const UpdateTask = () => {
     setTask(newTask);
   };
   return (
-    <div>
-      <h2>Please Update: {storedTask.name}</h2>
+    <div className="text-center">
+      <h2>Please Update</h2>
       <form onSubmit={handleUpdateTask}>
         <input
           onChange={handleInputChange}
           defaultValue={storedTask.name}
+          class="form-control w-25 m-auto d-inline-block"
           type="text"
           name="name"
           placeholder="task-name"
           required
         />
-        <br />
         <input
           onChange={handleInputChange}
           defaultValue={storedTask.image}
+          class="form-control w-25 m-auto d-inline-block"
           type="text"
           name="image"
           placeholder="task-img-url"
           required
         />
-        <br />
-        <button type="submit">Update Task</button>
+        <button className="btn btn-info ms-2" type="submit">
+          Update Task
+        </button>
       </form>
     </div>
   );

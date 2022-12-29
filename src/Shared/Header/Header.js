@@ -58,6 +58,11 @@ const Header = () => {
                 My Task
               </Link>
             </Nav.Link>
+            <Nav.Link>
+              <Link Link to="">
+                Completed Task
+              </Link>
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
